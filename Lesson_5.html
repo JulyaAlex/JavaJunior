@@ -5,6 +5,49 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
+    <!--Урок 5 Задание №2 Генерируем корзину товаров: количество и стоимость на базе js-->
+    <div id="cart"></div>
+    <script>
+        var cart = [
+            {
+                name: "iphone",
+                price: 70000,
+                quantity: 1,
+            },
+            {
+                name: "Защитное стекло",
+                price: 1000,
+                quantity: 2,
+            },
+            {
+                name: "Велосипед",
+                price: 16000,
+                quantity: 3,
+            }
+        ];
+
+        var $cart = document.getElementById("cart");
+        function buildTotal(cart) { //функция подсчета стоимости товаров в корзине
+            var sum = 0;
+            var count = 0;
+            for(var i = 0; i < cart.length; i++) { // цикл подсчета стоимости + количества товаров
+                sum = sum + cart[i].price * cart[i].quantity;
+                count = count + cart[i].quantity;
+            }
+
+            var $span = document.createElement("span"); 
+            if(cart.length === 0) {
+                $span.textContent = "Корзина пуста"
+            } else {
+                $span.textContent = "В корзине: " + count + " товаров на сумму " + sum + " рублей";
+            }
+            $cart.appendChild($span); // добавляем элемент в DOM
+        }
+
+        buildTotal(cart) // вывод на экран
+
+    </script>
+    <!--Урок 5 Задание №1 Шахматная доска HTML с подключенным скриптом -->
     <div class="wrap">
    </div>
     <script src="board.js"></script>
